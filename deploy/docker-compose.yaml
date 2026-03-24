@@ -1,0 +1,52 @@
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: database
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    expose:
+      - ${DB_PORT}
+    networks:
+      - backend_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ../
+      dockerfile: ./deploy/backend/Dockerfile
+    container_name: backend
+    networks:
+      - backend_network
+    expose:
+      - ${BACKEND_PORT}
+    depends_on:
+      database:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:80
+    networks:
+      - backend_network
+    depends_on:
+      - backend
+
+networks:
+  backend_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
