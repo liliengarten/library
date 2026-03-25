@@ -6,7 +6,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-COPY ./backend/composer.json ./backend/composer.lock .
+COPY ./backend/composer.json ./backend/composer.lock ./
 
 RUN composer install --no-dev --prefer-dist --optimize-autoloader --no-scripts --no-interaction
 
