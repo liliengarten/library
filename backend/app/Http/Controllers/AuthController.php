@@ -19,7 +19,7 @@ class AuthController extends Controller
         $token = $action->execute($request->validated());
 
         if ($token) {
-            return response()->json(["token" => $token], 201);
+            return response()->json(["token" => $token], 200);
         } else {
             return response()->json(["error" => "Authentication failed"], 401);
         }

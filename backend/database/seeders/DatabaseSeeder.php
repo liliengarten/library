@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Book;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +18,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        DB::table('books')->delete();
+        DB::table('users')->delete();
 
         User::factory()->create([
             'name' => 'Admin',
@@ -32,5 +36,7 @@ class DatabaseSeeder extends Seeder
             'password' => 'password',
             'role' => 'reader'
         ]);
+
+        Book::factory(10)->create();
     }
 }

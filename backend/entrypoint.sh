@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
-php artisan migrate --force
+composer install --prefer-dist --optimize-autoloader --no-scripts --no-interaction
+
+php artisan migrate --seed --force
 
 exec "$@"
