@@ -346,8 +346,8 @@ class ComposerStaticInitf4dbe09ac5bbddf1a0ad59af35d90a39
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -392,8 +392,8 @@ class ComposerStaticInitf4dbe09ac5bbddf1a0ad59af35d90a39
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri',
-            1 => __DIR__ . '/..' . '/league/uri-interfaces',
+            0 => __DIR__ . '/..' . '/league/uri-interfaces',
+            1 => __DIR__ . '/..' . '/league/uri',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -536,11 +536,13 @@ class ComposerStaticInitf4dbe09ac5bbddf1a0ad59af35d90a39
     );
 
     public static $classMap = array (
+        'App\\Actions\\AddToWantToReadAction' => __DIR__ . '/../..' . '/app/Actions/AddToWantToReadAction.php',
         'App\\Actions\\CreateUserAction' => __DIR__ . '/../..' . '/app/Actions/CreateUserAction.php',
         'App\\Actions\\LoginAction' => __DIR__ . '/../..' . '/app/Actions/LoginAction.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
         'App\\Http\\Controllers\\BookController' => __DIR__ . '/../..' . '/app/Http/Controllers/BookController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\WantToReadController' => __DIR__ . '/../..' . '/app/Http/Controllers/WantToReadController.php',
         'App\\Http\\Requests\\CreateBookRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CreateBookRequest.php',
         'App\\Http\\Requests\\CreateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CreateUserRequest.php',
         'App\\Http\\Requests\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/LoginRequest.php',
@@ -669,6 +671,7 @@ class ComposerStaticInitf4dbe09ac5bbddf1a0ad59af35d90a39
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\BookFactory' => __DIR__ . '/../..' . '/database/factories/BookFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',

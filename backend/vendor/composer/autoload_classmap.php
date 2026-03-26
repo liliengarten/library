@@ -6,11 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Actions\\AddToWantToReadAction' => $baseDir . '/app/Actions/AddToWantToReadAction.php',
     'App\\Actions\\CreateUserAction' => $baseDir . '/app/Actions/CreateUserAction.php',
     'App\\Actions\\LoginAction' => $baseDir . '/app/Actions/LoginAction.php',
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\BookController' => $baseDir . '/app/Http/Controllers/BookController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\WantToReadController' => $baseDir . '/app/Http/Controllers/WantToReadController.php',
     'App\\Http\\Requests\\CreateBookRequest' => $baseDir . '/app/Http/Requests/CreateBookRequest.php',
     'App\\Http\\Requests\\CreateUserRequest' => $baseDir . '/app/Http/Requests/CreateUserRequest.php',
     'App\\Http\\Requests\\LoginRequest' => $baseDir . '/app/Http/Requests/LoginRequest.php',
@@ -139,6 +141,7 @@ return array(
     'Cron\\HoursField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
     'Cron\\MinutesField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
     'Cron\\MonthField' => $vendorDir . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+    'Database\\Factories\\BookFactory' => $baseDir . '/database/factories/BookFactory.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',

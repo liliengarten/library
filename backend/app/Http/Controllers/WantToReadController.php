@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use AddToWantToReadAction;
+use App\Actions\AddToWantToReadAction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class WantToReadController extends Controller
 {
     public function index() {
-        $books = DB::table('want_to_read')->where('user_id', Auth::user()->id)->simplePaginate(10);
+        $books = DB::table('want_to_read')->where('user_id', Auth::user()->id)->paginate(10);
 
         return response()->json($books, 200);
     }

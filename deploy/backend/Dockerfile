@@ -6,13 +6,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-#COPY ./backend/composer.json ./backend/composer.lock ./
-
-#RUN composer install --prefer-dist --optimize-autoloader --no-scripts --no-interaction
-
-COPY --chmod=755 ./backend .
-
-RUN chown -R www-data:www-data storage/ bootstrap/cache/ && chmod -R 775 storage/ bootstrap/cache/
+COPY ./backend .
 
 ENTRYPOINT ["./entrypoint.sh"]
 
