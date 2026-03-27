@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('rented_books', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->ForeignId('user_id')->constrained('users');
-            $table->ForeignId('book_id')->constrained('books');
+            $table->ForeignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->ForeignId('book_id')->constrained('books')->onDelete('cascade');
         });
     }
 
