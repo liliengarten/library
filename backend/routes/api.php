@@ -11,6 +11,13 @@ Route::POST('/register', [AuthController::class, 'register']);
 Route::POST('/login', [AuthController::class, 'login']);
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
+
+    Route::group(['middleware' => 'admin'], function() {
+        Route::POST('/books', [BookController::class, 'add']);
+        Route::PATCH('/books/{id}', [BookController::class, 'update']);
+        Route::DELETE('/books/{id}', [BookController::class, 'remove']);
+    });
+
     Route::GET('/logout', [AuthController::class, 'logout']);
 
     Route::GET('/books', [BookController::class, 'index']);
