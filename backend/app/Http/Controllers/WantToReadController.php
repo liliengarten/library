@@ -30,14 +30,14 @@ class WantToReadController extends Controller
         }
     }
 
-    public function delete(RemoveFromWantToReadAction $action, int $id) {
+    public function remove(RemoveFromWantToReadAction $action, int $id) {
         $book = $action->execute($id);
 
         if ($book) {
             return response()->json([
                 "message" => "Success",
                 "book" => $book
-            ], 204);
+            ], 200);
         } else {
             return response()->json(["error" => "Book not found"], 404);
         }
