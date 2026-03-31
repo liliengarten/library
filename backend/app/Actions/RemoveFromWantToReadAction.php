@@ -11,10 +11,10 @@ class RemoveFromWantToReadAction {
 
         if ($book) {
             $deleted = DB::table('want_to_read')->where('user_id', Auth::user()->id)->where('book_id', $id)->delete();
-        }
 
-        if (!$deleted) {
-            return null;
+            if (!$deleted) {
+                return null;
+            }
         }
 
         return $book;

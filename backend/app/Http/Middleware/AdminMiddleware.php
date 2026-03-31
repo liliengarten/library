@@ -16,10 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user->role != "admin") {
+        if (Auth::user()->role != "admin") {
             return response()->json([
                 "message" => "Access denied"
-            ], 403)
+            ], 403);
         }
 
         return $next($request);

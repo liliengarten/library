@@ -5,14 +5,14 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateBookRequest extends FormRequest
+class UpdateBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,11 +23,11 @@ class CreateBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'min:2', 'max:150'],
-            'author' => ['required', 'string', 'min:3', 'max:100'],
-            'description' => ['required', 'string', 'min:10'],
-            'year' => ['required', 'integer', 'min:1500', 'max:' . now()->year],
-            'available_copies' => ['required', 'integer', 'min:1'],
+            'title' => ['string', 'min:2', 'max:150'],
+            'author' => ['string', 'min:3', 'max:100'],
+            'description' => ['string', 'min:10'],
+            'year' => ['integer', 'min:1500', 'max:' . now()->year],
+            'available_copies' => ['integer', 'min:1'],
         ];
     }
 }

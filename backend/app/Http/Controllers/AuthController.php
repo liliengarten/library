@@ -12,7 +12,6 @@ class AuthController extends Controller
 {
     public function register(CreateUserRequest $request, CreateUserAction $action) {
         $user = $action->execute($request->validated());
-
         return response()->json($user, 201);
     }
 

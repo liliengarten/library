@@ -15,4 +15,9 @@ class Book extends Model
         'year',
         'available_copies'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }
