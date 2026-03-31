@@ -31,8 +31,7 @@ Route::group(['middleware' => ['auth:sanctum', 'block']], function() {
     Route::DELETE('/want-to-read/{id}', [WantToReadController::class, 'remove']);
 
     Route::GET('/rent-history', [BookRentController::class, 'history']);
-    Route::GET('/rented-books', [BookRentController::c
-    lass, 'index']);
+    Route::GET('/rented-books', [BookRentController::class, 'index']);
     Route::POST('/rent/{id}', [BookRentController::class, 'add']);
     Route::DELETE('/rent/{id}', [BookRentController::class, 'remove']);
 });
