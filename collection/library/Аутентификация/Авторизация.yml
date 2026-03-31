@@ -1,0 +1,37 @@
+info:
+  name: Авторизация
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{host}}login"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "admin@library.ru",
+        "password": "Admin123"
+      }
+
+      //  {
+      //    "email": "user@library.ru",
+      //    "password": "password"
+      //  }
+
+      //  {
+      //    "email": "qwerty@email.com",
+      //    "password": "Qwerty12345"
+      //  }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: bru.setEnvVar("token", res.body.token)
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

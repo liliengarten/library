@@ -1,0 +1,30 @@
+info:
+  name: Добавить книгу
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{host}}books"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "title": "lalalala",
+        "author": "asdasdasd",
+        "description": "asdasdasdasdasdas",
+        "year": 1500,
+        "available_copies": 123
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

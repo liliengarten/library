@@ -1,0 +1,20 @@
+info:
+  name: Арендовать книгу
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{host}}rent/193"
+  headers:
+    - name: Accept
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

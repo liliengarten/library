@@ -1,0 +1,20 @@
+info:
+  name: Удалить книгу
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{host}}books/171"
+  headers:
+    - name: Accept
+      value: application/json
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

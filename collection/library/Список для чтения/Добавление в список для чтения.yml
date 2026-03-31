@@ -1,0 +1,17 @@
+info:
+  name: Добавление в список для чтения
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{host}}want-to-read/193"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

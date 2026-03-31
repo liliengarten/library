@@ -1,6 +1,6 @@
 name: library
 variables:
   - name: host
-    value: http://localhost:8080/library/
+    value: http://localhost:8080/api/
   - name: token
     value: ""
