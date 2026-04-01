@@ -2,4 +2,5 @@
 vendor/
 node_modules/
 .env_example
-deploy/.env
+deploy/prod/.env
+deploy/dev/.env
