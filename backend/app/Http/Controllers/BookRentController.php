@@ -20,7 +20,7 @@ class BookRentController extends Controller
     public function add(RentBookAction $action, int $id) {
         $result = $action->execute($id);
 
-        if (!$result[0] || $result[0] && !$result[1]) {
+        if (!$result[0]) {
             return response()->json([
                 "message" => "Book not found"
             ], 404);

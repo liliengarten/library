@@ -6,8 +6,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 
-COPY ./backend .
-
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.dev.sh"]
 
 CMD ["php-fpm"]

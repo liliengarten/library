@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{host}}rent/193"
+  url: "{{host}}rent/2"
   headers:
     - name: Accept
       value: application/json

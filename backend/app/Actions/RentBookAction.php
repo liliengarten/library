@@ -15,7 +15,7 @@ class RentBookAction {
                 return [$book, $book->available_copies];
             }
 
-            $result = DB::table('rented_books')->insert([
+            DB::table('rented_books')->insert([
                 'book_id' => $id,
                 'user_id' => Auth::id()
             ]);
@@ -28,7 +28,7 @@ class RentBookAction {
             $book->update(['available_copies' => $book->available_copies - 1]);
             $book->save();
 
-            return [$book, !$result];
+            return [$book, $already_rented];
         }
 
         return [$book, $already_rented];

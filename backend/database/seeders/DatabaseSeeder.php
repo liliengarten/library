@@ -17,26 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        DB::table('books')->delete();
-        DB::table('users')->delete();
-
-        User::factory()->create([
-            'name' => 'Admin',
-            'surname' => 'Admin',
-            'email' => 'admin@library.ru',
-            'password' => 'Admin123',
-            'role' => 'admin'
+        $this->call([
+            UserSeeder::class,
         ]);
-
-        User::factory()->create([
-            'name' => 'Reader',
-            'surname' => 'Reader',
-            'email' => 'user@library.ru',
-            'password' => 'password',
-            'role' => 'reader'
-        ]);
-
-        Book::factory(10)->create();
     }
 }

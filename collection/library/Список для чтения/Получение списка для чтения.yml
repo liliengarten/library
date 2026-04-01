@@ -6,6 +6,9 @@ info:
 http:
   method: GET
   url: "{{host}}want-to-read"
+  headers:
+    - name: Accept
+      value: application/json
   auth:
     type: bearer
     token: "{{token}}"

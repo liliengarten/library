@@ -1,0 +1,5 @@
+backend/vendor/
+backend/bootstrap/cache/
+backend/storage/logs/
+deploy/
+.git/

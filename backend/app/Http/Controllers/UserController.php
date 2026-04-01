@@ -26,16 +26,18 @@ class UserController extends Controller
 
         $user = $action->execute($id);
 
-        if ($user->is_blocked) {
-            return response()->json([
-                "message" => "User has been blocked",
-                "user" => $user
-            ], 200);
-        } else if (!$user->is_blocked) {
-            return response()->json([
-                "message" => "User has been unblocked",
-                "user" => $user
-            ], 200);
+        if ($user) {
+            if ($user->is_blocked) {
+                return response()->json([
+                    "message" => "User has been blocked",
+                    "user" => $user
+                ], 200);
+            } else if (!$user->is_blocked) {
+                return response()->json([
+                    "message" => "User has been unblocked",
+                    "user" => $user
+                ], 200);
+            }
         }
 
         return response()->json([
