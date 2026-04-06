@@ -4,7 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Broadcasting\HasBroadcastChannel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -19,6 +22,14 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    public function rentedBooks(): BelongsToMany {
+        return $this->belongsToMany(Book::class, 'rented_books');
+    }
+
+    public function rentHistory(): HasMany {
+        return $this->hasMany(RentHistory::class);
+    }
     protected $fillable = [
         'name',
         'surname',

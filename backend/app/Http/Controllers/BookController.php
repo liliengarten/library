@@ -10,22 +10,19 @@ use App\Http\Requests\CreateBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Http\Resources\PaginationResource;
 use App\Models\Book;
-use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
     public function index() {
-        $data = Book::paginate(10);
-        return response()->json(new PaginationResource($data), 200);
+        return response()->json(new PaginationResource(Book::paginate(10)));
     }
 
     public function available() {
-        $data = Book::where('available_copies', '>', 0)->paginate(10);
-        return response()->json(new PaginationResource($data), 200);
+        return response()->json(new PaginationResource(Book::where('available_copies', '>', 0)->paginate(10)));
     }
 
-    public function add(AddBookAction $action, CreateBookRequest $request) {
-        $result = $action->execute($request->validated());
+    public function add(CreateBookRequest $request) {
+        $result = AddBookAction::execute($request->validated());
 
         return response()->json([
             "message" => "Book added successfully",
@@ -33,32 +30,21 @@ class BookController extends Controller
         ], 201);
     }
 
-    public function update(UpdateBookAction $action, UpdateBookRequest $request, int $id) {
-        $result = $action->execute($request->validated(), $id);
+    public function update(UpdateBookRequest $request, Book $book) {
+        $result = UpdateBookAction::execute($request->validated(), $book);
 
-        if ($result) {
-            return response()->json([
-                "message" => "Book updated successfully",
-                "book" => $result
-            ], 200);
-        } else {
-            return response()->json([
-                "message" => "Book not found",
-            ], 404);
-        }
+        return response()->json([
+            "message" => "Book updated successfully",
+            "book" => $result
+        ]);
     }
 
-    public function remove(RemoveBookAction $action, int $id) {
-        $result = $action->execute($id);
+    public function remove(Book $book) {
+        $result = RemoveBookAction::execute($book);
 
-        if ($result) {
-            return response()->json([
-                "message" => "Book removed successfully",
-                "book" => $result
-            ], 200);
-        } else {
-            return response()->json([
-                "message" => "Book not found",
-            ], 404);
-        }    }
+        return response()->json([
+            "message" => "Book removed successfully",
+            "book" => $result
+        ]);
+    }
 }
