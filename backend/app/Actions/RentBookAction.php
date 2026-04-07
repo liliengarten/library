@@ -4,12 +4,7 @@ namespace App\Actions;
 
 use App\Exceptions\AlreadyRentedException;
 use App\Models\Book;
-use App\Models\RentedBook;
-use Illuminate\Database\Events\TransactionBeginning;
-use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use PHPUnit\Framework\MockObject\Generator\DuplicateMethodException;
 
 class RentBookAction
 {
@@ -18,7 +13,6 @@ class RentBookAction
         if (request()->user()->rentedBooks()->where('book_id', $book->id)->exists()) {
             throw new AlreadyRentedException();
         }
-
 
         if ($book->available_copies > 0) {
             DB::transaction(function () use ($book) {

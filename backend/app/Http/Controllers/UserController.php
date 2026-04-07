@@ -6,42 +6,33 @@ use App\Actions\BlockUserAction;
 use App\Http\Resources\PaginationResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\Block;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $data = User::paginate(10);
-        return response()->json(new PaginationResource($data), 200);
+        return response()->json(new PaginationResource(User::paginate(10)));
     }
 
-    public function block(BlockUserAction $action, int $id)
+    public function block(User $user)
     {
-        if ($id == Auth::user()->id) {
+        if ($user->id == request()->user()->id) {
             return response()->json([
                 "message" => "Can't block yourself",
             ], 403);
         }
 
-        $user = $action->execute($id);
+        BlockUserAction::execute($user);
 
-        if ($user) {
-            if ($user->is_blocked) {
-                return response()->json([
-                    "message" => "User has been blocked",
-                    "user" => $user
-                ], 200);
-            } else if (!$user->is_blocked) {
-                return response()->json([
-                    "message" => "User has been unblocked",
-                    "user" => $user
-                ], 200);
-            }
+        if ($user->is_blocked) {
+            return response()->json([
+                "message" => "User has been blocked",
+            ]);
+        } else {
+            return response()->json([
+                "message" => "User has been unblocked",
+            ]);
         }
-
-        return response()->json([
-            "message" => "User not found",
-        ], 404);
     }
 }

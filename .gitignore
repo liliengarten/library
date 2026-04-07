@@ -1,6 +1,6 @@
 .idea
 vendor/
 node_modules/
-.env_example
+.env
 deploy/prod/.env
 deploy/dev/.env

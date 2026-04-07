@@ -6,7 +6,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginAction {
-    public function execute(array $data): string {
+    public static function execute(array $data): string {
         if (Auth::attempt($data)) {
             return Auth::user()->createToken('token')->plainTextToken;
         }

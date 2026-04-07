@@ -5,14 +5,10 @@ info:
 
 http:
   method: POST
-  url: "{{host}}want-to-read/193"
+  url: "{{host}}want-to-read/2"
   headers:
     - name: Accept
       value: application/json
-  params:
-    - name: ""
-      value: ""
-      type: query
   auth:
     type: bearer
     token: "{{token}}"

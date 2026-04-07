@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{host}}want-to-read/1"
+  url: "{{host}}want-to-read/2"
   headers:
     - name: Accept
       value: application/json
