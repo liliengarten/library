@@ -11,10 +11,9 @@ class RemoveFromWantToReadAction
 {
     public static function execute(Book $book)
     {
-        if (!request()->user()->WantToRead()->where('book_id', $book->id)->exists()) {
-            throw new NotFoundHttpException("Rent record not found");
+        $affectedRows = request()->user()->wantToRead()->where('book_id', $book->id)->detach($book->id);
+        if ($affectedRows == 0) {
+            throw new NotFoundHttpException();
         }
-
-        request()->user()->wantToRead()->where('book_id', $book->id)->detach($book->id);
     }
 }

@@ -10,10 +10,6 @@ class RentBookAction
 {
     public static function execute(Book $book)
     {
-        if (request()->user()->rentedBooks()->where('book_id', $book->id)->exists()) {
-            throw new AlreadyRentedException();
-        }
-
         if ($book->available_copies > 0) {
             DB::transaction(function () use ($book) {
                 DB::table('rented_books')->insert([

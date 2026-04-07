@@ -7,6 +7,6 @@ use App\Models\Book;
 class UpdateBookAction
 {
     public static function execute(array $data, Book $book) {
-        return $book->update($data);
+        $book->update($data);
     }
 }

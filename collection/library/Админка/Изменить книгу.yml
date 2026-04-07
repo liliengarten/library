@@ -5,10 +5,16 @@ info:
 
 http:
   method: PATCH
-  url: "{{host}}books/1"
+  url: "{{host}}books/2"
   headers:
     - name: Accept
       value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "title": "titleeeeeee"
+      }
   auth:
     type: bearer
     token: "{{token}}"

@@ -9,12 +9,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class ReturnBookAction
 {
     public static function execute(Book $book) {
-        if (!request()->user()->RentedBooks()->where('book_id', $book->id)->exists()) {
-            throw new NotFoundHttpException("Rent record not found");
-        }
-
         DB::transaction(function () use ($book) {
-            request()->user()->RentedBooks()->detach($book->id);
+            $affectedRows = request()->user()->RentedBooks()->detach($book->id);
+            if ($affectedRows == 0) {
+                throw new NotFoundHttpException();
+            }
+
             $book->increment('available_copies');
         });
 

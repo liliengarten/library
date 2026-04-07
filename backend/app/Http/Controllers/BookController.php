@@ -31,20 +31,18 @@ class BookController extends Controller
     }
 
     public function update(UpdateBookRequest $request, Book $book) {
-        $result = UpdateBookAction::execute($request->validated(), $book);
+        UpdateBookAction::execute($request->validated(), $book);
 
         return response()->json([
             "message" => "Book updated successfully",
-            "book" => $result
         ]);
     }
 
     public function remove(Book $book) {
-        $result = RemoveBookAction::execute($book);
+        RemoveBookAction::execute($book);
 
         return response()->json([
             "message" => "Book removed successfully",
-            "book" => $result
         ]);
     }
 }

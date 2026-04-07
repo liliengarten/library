@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\AdminMiddleware;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -21,5 +23,23 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->renderable(function (Throwable $exception, Request $request) {
+            if ($request->is("api/*")) {
+                if ($exception instanceof \Illuminate\Database\UniqueConstraintViolationException) {
+                    return response()->json([
+                        "message" => "Record already exists"
+                    ], 409);
+                }
+            }
+        });
+
+        $exceptions->renderable(function (Throwable $exception, Request $request) {
+            if ($request->is("api/*")) {
+                if ($exception instanceof NotFoundHttpException) {
+                    return response()->json([
+                        "message" => "Record not found"
+                    ], 404);
+                }
+            }
+        });
     })->create();

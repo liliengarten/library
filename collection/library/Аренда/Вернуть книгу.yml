@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{host}}rent/2"
+  url: "{{host}}rent/1"
   headers:
     - name: Accept
       value: application/json
