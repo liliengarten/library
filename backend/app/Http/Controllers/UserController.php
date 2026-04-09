@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Actions\BlockUserAction;
 use App\Http\Resources\PaginationResource;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Block;
 
 class UserController extends Controller
 {

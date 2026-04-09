@@ -7,8 +7,6 @@ use App\Actions\LoginAction;
 use App\Actions\LogoutAction;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Auth\Events\Logout;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
