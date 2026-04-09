@@ -8,7 +8,11 @@
 Для первого запуска скопируйте в терминал следующее:
 ```shell
 git clone https://github.com/liliengarten/library
-cd library/deploy/prod
+```
+Создайте и заполните файл library/deploy/dev/.env по шаблону library/deploy/dev/.env.example 
+После чего скопируйте в терминал следующее:
+```shell
+cd library/deploy/dev
 docker compose up -d --build
 ```
 Для всех последующих запусков достаточно скопировать в терминал следующее:
