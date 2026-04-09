@@ -9,7 +9,7 @@
 ```shell
 git clone https://github.com/liliengarten/library
 ```
-Создайте и заполните файл library/deploy/dev/.env по шаблону library/deploy/dev/.env.example 
+Создайте и заполните файл library/deploy/dev/.env по шаблону library/deploy/dev/.env.example.
 После чего скопируйте в терминал следующее:
 ```shell
 cd library/deploy/dev
@@ -17,6 +17,6 @@ docker compose up -d --build
 ```
 Для всех последующих запусков достаточно скопировать в терминал следующее:
 ```shell
-cd library/deploy/prod 
+cd library/deploy/dev
 docker compose up
 ```
